@@ -1,0 +1,41 @@
+services:
+  postgres:
+    image: postgis/postgis:16-3.4
+    container_name: personfinder-postgres
+    environment:
+      POSTGRES_DB: postgres
+      POSTGRES_USER: pfdbuser
+      POSTGRES_PASSWORD: pf_password_123
+    ports:
+      - "5432:5432"
+    volumes:
+      - personfinder-postgres-data:/var/lib/postgresql/data
+      - ./db/init.sql:/docker-entrypoint-initdb.d/init.sql:ro
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U pfdbuser -d personfinder"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 10s
+    restart: unless-stopped
+
+  api:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: personfinder-api
+    depends_on:
+      postgres:
+        condition: service_healthy
+    environment:
+      ASPNETCORE_ENVIRONMENT: Development
+      ASPNETCORE_URLS: http://+:8080
+      ConnectionStrings__PersonFinderDb: Host=postgres;Port=5432;Database=personfinder;Username=pfdbuser;Password=pf_password_123
+      Gemini__ApiKey: ${GEMINI_API_KEY:-}
+      Gemini__Model: ${GEMINI_MODEL:-gemini-3-flash-preview}
+    ports:
+      - "5265:8080"
+    restart: unless-stopped
+
+volumes:
+  personfinder-postgres-data:
