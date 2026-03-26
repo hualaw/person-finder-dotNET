@@ -20,5 +20,16 @@ dotnet run --project src/PersonFinder.API
 
 Before running the API, update `src/PersonFinder.API/appsettings.json` with your local database and Gemini settings.
 
+## Swagger UI
+
+After running the API, access the interactive API documentation at:
+- http://localhost:5265/swagger (HTTP)
+- https://localhost:7260/swagger (HTTPS)
+
+The Swagger UI allows you to:
+- View all available endpoints
+- Read request/response schemas
+- Test API calls directly from the browser
+
 ## System Design
 - See `docs/architecture/system-design.md`.
