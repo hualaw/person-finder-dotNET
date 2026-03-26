@@ -31,5 +31,39 @@ The Swagger UI allows you to:
 - Read request/response schemas
 - Test API calls directly from the browser
 
+## Unit Tests
+
+Run all tests in the solution:
+```bash
+dotnet test PersonFinderDotNET.slnx
+```
+
+Run tests for a specific layer:
+```bash
+# Domain layer tests (27 tests)
+dotnet test tests/PersonFinder.Domain.Tests/PersonFinder.Domain.Tests.csproj
+
+# Application layer tests (40 tests)
+dotnet test tests/PersonFinder.Application.Tests/PersonFinder.Application.Tests.csproj
+
+# Infrastructure layer tests
+dotnet test tests/PersonFinder.Infrastructure.Tests/PersonFinder.Infrastructure.Tests.csproj
+
+# API layer tests
+dotnet test tests/PersonFinder.API.Tests/PersonFinder.API.Tests.csproj
+```
+
+Run tests with code coverage:
+```bash
+dotnet test PersonFinderDotNET.slnx /p:CollectCoverage=true /p:CoverageFormat=cobertura
+```
+
+### Test Coverage by Layer
+
+- **Domain**: Entity aggregate root, value object validation, business rule enforcement
+- **Application**: Command/query handler logic, input validation, security concerns
+- **Infrastructure**: Repository patterns, persistence layer (placeholder)
+- **API**: Controller endpoints, request/response mapping (placeholder)
+
 ## System Design
 - See `docs/architecture/system-design.md`.
