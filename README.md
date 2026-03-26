@@ -8,6 +8,21 @@ It was rebuilt from a Kotlin-based implementation into .NET to demonstrate cross
 
 The system enables efficient "nearby user" queries using PostGIS and follows clean architecture principles to ensure maintainability and scalability.
 
+## What This Project Demonstrates
+
+This project demonstrates:
+
+- Building scalable backend services in .NET (ASP.NET Core)  
+- Designing API-first systems with clean architecture  
+- Implementing geo-spatial queries using PostGIS  
+- Applying production-oriented practices such as pagination, indexing, and modular design  
+
+## Engineering Challenges
+
+- Efficient geo-spatial querying at scale  
+- Avoiding performance bottlenecks in distance calculations  
+- Maintaining clean separation between business logic and infrastructure  
+
 ---
 
 ## Architecture

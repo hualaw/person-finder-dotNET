@@ -74,10 +74,10 @@ Future scaling strategies:
 
 ---
 
-## 7. Trade-offs
+## Trade-offs
 
-* PostGIS introduces complexity but provides significant performance gains
-* Clean architecture adds initial overhead but improves long-term maintainability
+- Using PostGIS introduces operational complexity but significantly improves query performance compared to application-level calculations  
+- Clean architecture increases initial development overhead but enables better scalability and maintainability in the long term  
 
 ---
 
@@ -88,3 +88,19 @@ Future scaling strategies:
 * Support retry mechanisms for transient failures
 
 ---
+
+## Request Flow
+
+1. Client sends request with lat/lng and radius  
+2. API layer validates input  
+3. Application layer processes the use case  
+4. Repository queries PostGIS using spatial functions  
+5. Results are transformed into DTOs and returned  
+
+## Future Scalability
+
+The system is designed to support:
+
+- Horizontal scaling of API services  
+- Caching layer (e.g., Redis) for hot queries  
+- Read replicas for database scaling  
