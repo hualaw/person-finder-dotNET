@@ -1,0 +1,34 @@
+using PersonFinder.Application.Features.Persons.Commands;
+using PersonFinder.Application.Features.Persons.Queries;
+using PersonFinder.Infrastructure.DependencyInjection;
+
+var builder = WebApplication.CreateBuilder(args);
+
+// Add services to the container.
+builder.Services.AddControllers();
+builder.Services.AddInfrastructure(builder.Configuration);
+
+// Application layer — command handlers
+builder.Services.AddScoped<CreatePersonCommandHandler>();
+builder.Services.AddScoped<UpdatePersonLocationCommandHandler>();
+builder.Services.AddScoped<GetPersonByIdQueryHandler>();
+builder.Services.AddScoped<GetNearbyPersonsQueryHandler>();
+
+// Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
+builder.Services.AddOpenApi();
+
+var app = builder.Build();
+
+// Configure the HTTP request pipeline.
+if (app.Environment.IsDevelopment())
+{
+    app.MapOpenApi();
+}
+
+app.UseHttpsRedirection();
+
+app.UseAuthorization();
+
+app.MapControllers();
+
+app.Run();

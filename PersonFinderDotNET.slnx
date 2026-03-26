@@ -1,0 +1,14 @@
+<Solution>
+  <Folder Name="/src/">
+    <Project Path="src/PersonFinder.API/PersonFinder.API.csproj" />
+    <Project Path="src/PersonFinder.Application/PersonFinder.Application.csproj" />
+    <Project Path="src/PersonFinder.Domain/PersonFinder.Domain.csproj" />
+    <Project Path="src/PersonFinder.Infrastructure/PersonFinder.Infrastructure.csproj" />
+  </Folder>
+  <Folder Name="/tests/">
+    <Project Path="tests/PersonFinder.API.Tests/PersonFinder.API.Tests.csproj" />
+    <Project Path="tests/PersonFinder.Application.Tests/PersonFinder.Application.Tests.csproj" />
+    <Project Path="tests/PersonFinder.Domain.Tests/PersonFinder.Domain.Tests.csproj" />
+    <Project Path="tests/PersonFinder.Infrastructure.Tests/PersonFinder.Infrastructure.Tests.csproj" />
+  </Folder>
+</Solution>
